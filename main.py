@@ -55,8 +55,8 @@ class LoginWindow(QWidget):
         db = QSqlDatabase.addDatabase('QMYSQL')
         db.setHostName('localhost')
         db.setDatabaseName('project')
-        db.setUserName('Seth')
-        db.setPassword('JuliaOmen0404!!')
+        db.setUserName('root')
+        db.setPassword('password123')
         
         if not db.open():
             self.status.setText('Connection failed')
@@ -66,7 +66,7 @@ class LoginWindow(QWidget):
         password = self.lineEdits['Password'].text()
 
         query = QSqlQuery()
-        query.prepare('SELECT * FROM username WHERE username=:username')
+        query.prepare('SELECT * FROM users WHERE username=:username')
         query.bindValue(':username', username)
         query.exec()
 
